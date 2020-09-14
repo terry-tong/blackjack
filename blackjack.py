@@ -35,6 +35,7 @@ class Hand:
             deck.deck.remove(self.hand[len(self.hand) - 1])
             n += 1
         print(self.hand)
+        return self.hand
 
     def value(self):
         card_face = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
@@ -44,10 +45,34 @@ class Hand:
             for m in range(len(card_face)):
                 if self.hand[n][1:] == card_face[m]:
                     hand_value += card_value[m]
-        print("The value of your hand is {}".format(hand_value))
+        return hand_value
+
+    def ace_in_hand(self):
+        ace = False
+        for card in self.hand:
+            if "A" in card:
+                ace = True
+        return ace
+
+    def check(self):
+        if self.ace_in_hand():
+            if self.value+10 > 21:
+                print("The value of your hand is {}".format(self.value()))
+            else:
+                print("The value of your hand is {}/{}".format(self.value(),self.value()+10))
+        else:
+            print("The value of your hand is {}".format(self.value()))
+        if self.value() == 21:
+            print("Blackjack!")
+        elif self.value() > 21:
+            print("Bust!")
+
 
 deck = Deck()
 deck.build()
 terry = Hand()
 terry.draw(2)
-terry.value()
+terry.check()
+
+terry.draw(1)
+terry.check()
