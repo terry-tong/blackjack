@@ -1,2 +1,2 @@
 # blackjack
-[Python] Project that emulates a game of blackjack. WIP
+Project that emulates a game of blackjack. WIP
