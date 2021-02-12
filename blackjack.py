@@ -56,7 +56,7 @@ class Hand:
 
     def check(self):
         if self.ace_in_hand():
-            if self.value+10 > 21:
+            if self.value() + 10 > 21:
                 print("The value of your hand is {}".format(self.value()))
             else:
                 print("The value of your hand is {}/{}".format(self.value(),self.value()+10))
